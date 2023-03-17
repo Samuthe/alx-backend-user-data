@@ -1,15 +1,16 @@
-#!usr/bin/env/python3
-'''User's model'''
-
-from sqlalchemy import Integer, String, Column
+#!/usr/bin/env python3
+"""
+Users model
+"""
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
 
 class User(Base):
-    '''Rep user obj'''
-
+    """ Represents user object/table
+    """
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
