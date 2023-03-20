@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Module of Index views
 """
+from crypt import methods
 from flask import jsonify, abort
 from api.v1.views import app_views
 
@@ -26,21 +27,17 @@ def stats() -> str:
     return jsonify(stats)
 
 
-@app_views.route('/unauthorized', strict_slashes=False)
-def unauthorized_route() -> str:
-    """ GET /api/v1/unauthorized
-        Test route for 401 error handler
-        Return:
-         - Nothing
+@app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
+def unauthorized() -> str:
     """
-    abort(401)
+    Used to test a 401
+    """
+    return abort(401)
 
 
-@app_views.route('/forbidden', strict_slashes=False)
-def forbidden_route() -> str:
-    """ GET /api/v1/forbidden
-        Test route for 403 error handler
-        Return:
-         - Nothing
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden() -> str:
+    """
+    Test a 403
     """
     abort(403)
